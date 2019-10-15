@@ -1,8 +1,17 @@
+# use the Node alpine image
 FROM node:alpine
 
+# WORK Directory for the application
 WORKDIR '/app'
 
+# Copy the files to the container
 COPY ./package.json ./
+
+# Do the npm build
 RUN npm install
+
+# Copy all the files in WORKDIR (/app)
 COPY . .
+
+# Default command for container
 CMD ["npm", "run", "start"]
